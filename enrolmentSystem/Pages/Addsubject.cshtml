@@ -1,0 +1,53 @@
+﻿@page
+@model enrolmentSystem.Pages.AddsubjectModel
+@{
+}
+<div class="subject-management-container">
+    <div class="management-header">Subject Management</div>
+    <div class="management-grid">
+        <div class="table-container">
+            <div class="table-wrapper">
+                <table class="subject-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 15%">ID</th>
+                            <th style="width: 40%">Subject Name</th>
+                            <th style="width: 15%">Credits</th>
+                            <th style="width: 30%">Course</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var subject in Model.subjects)
+                        {
+                            <tr>
+                                <td>@subject.subjectID</td>
+                                <td>@subject.subjectName</td>
+                                <td>@subject.subjectCredit</td>
+                                <td>@subject.courseID</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <h2>Add Subject</h2>
+            <form method="Post" asp-page-handler="addsubject" style="justify-self: start;">
+                Subject ID : <br /><input type="text" asp-for="sub.subjectID" />
+                <span asp-validation-for="sub.subjectID" class="text-danger"></span>
+                Subject Name : <br /><input type="text" asp-for="sub.subjectName" />
+                <span asp-validation-for="sub.subjectName" class="text-danger"></span>
+                Credit : <br /><input type="number" asp-for="sub.subjectCredit" req />
+                <span asp-validation-for="sub.subjectCredit" class="text-danger"></span>
+                Coruse ID :<br /><select asp-for="sub.courseID" style="width : 100px;">
+                    @foreach (var course in Model.courses)
+                    {
+                        <option value="@course.courseID">@course.courseID</option>
+                    }
+                </select>
+                <input type="submit" value="submit" />
+            </form>
+        </div>
+    </div>
+</div>

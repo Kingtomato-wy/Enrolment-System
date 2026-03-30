@@ -1,0 +1,53 @@
+﻿@page
+@model enrolmentSystem.Pages.StudentDashboardModel
+@{
+    ViewData["Title"] = "Student Dashboard";
+}
+
+<head>
+    <!--<link rel="stylesheet" href="~/css/dashboard.css">-->
+</head>
+
+<body>
+    <div class="text-center">
+        <h1 class="display-4">Welcome to Online Enrolment System</h1>
+    </div>
+
+    <div>
+        <h5>Enrolment</h5><hr />
+        <p onclick="location.href='CourseEnrolment'">Course Enrolment</p>
+    </div>
+
+    <div>
+        <h5>Add / Drop</h5><hr />
+        <p onclick="location.href='/CourseAddDrop'">Course Add / Drop</p>
+        <p onclick="location.href='/AddDropHistory'">Add Drop History</p>
+    </div>
+
+    <div>
+        <h5>Enquiry</h5><hr />
+        <p onclick="location.href='/TimetableMatching'">Timetable Matching</p>
+        <p onclick="location.href='/StudentEvaluationOfTeaching'">Student Evaluation of Teaching</p>
+        <p onclick="location.href='/ContactUs'">Contact Us</p>
+    </div>
+
+    <div>
+        <h5>Statement</h5><hr />
+        <p onclick="location.href='/Statement/StudentStatement'">Student Statement</p>
+        <p onclick="location.href='/Statement/RegistrationSummary'">Registration Summary / Class Timetable</p>
+    </div>
+
+    <div>
+        <h5>Payment</h5><hr />
+        <p onclick="location.href='/Payment''">Payment</p>
+        <p onclick="location.href='/OnlinePaymentHistory'">Online Payment History</p>
+        <p onclick="location.href='/InvoiceAndAdjustmentNote'">Invoice and Adjustment Note</p>
+    </div>
+
+    <div>
+        <h5>Account</h5><hr />
+        <p onclick="location.href='/Account/UpdateProfile'">Update Profile</p>
+        <p onclick="location.href='/Account/ChangePassword'">Change Password</p>
+        <p onclick="location.href='/Login/Login'">Log Out</p>
+    </div>
+</body>

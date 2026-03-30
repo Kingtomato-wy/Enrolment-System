@@ -1,0 +1,40 @@
+﻿@page
+@model enrolmentSystem.Pages.ViewsubjectofferModel
+@{
+}
+<div class="table-container" style="width : 1000px">
+    <div class="table-wrapper" style="width : 1000px">
+        <table class="subject-table" style="width : 1000px">
+            <thead>
+                <tr>
+                    <th style="width: 5%">ID</th>
+                    <th style="width: 20%">Subject ID</th>
+                    <th style="width: 15%">Session ID</th>
+                    <th style="width: 20%">Lecturer ID</th>
+                    <th style="width: 10%">Section</th>
+                    <th style="width: 15%">Max Seats</th>
+                    <th style="width: 15%">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var subject in Model.subjectOffereds)
+                {
+                    <tr>
+                        <td>@subject.subjectOfferedID</td>
+                        <td>@subject.subjectID</td>
+                        <td>@subject.sessionID</td>
+                        <td>@subject.lecturerID</td>
+                        <td>@subject.section</td>
+                        <td>@subject.maxSeats</td>
+                        <td>
+                            <form asp-page-handler="DeleteOffered" method="post">
+                                <input type="hidden" name="subjectoffer" value="@subject.subjectOfferedID" />
+                                <input type="submit" class="btn-submit" style="width: auto;" value="Delete" />
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

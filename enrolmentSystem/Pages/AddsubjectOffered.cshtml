@@ -1,0 +1,117 @@
+﻿@page
+@model enrolmentSystem.Pages.AddsubjectOfferedModel
+@{
+}
+
+<div class="subject-management-container">
+    <div class="management-header">Subject Management</div>
+    <div class="management-grid">
+        <div class="table-container">
+            <div class="table-wrapper">
+                <table class="subject-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 15%">ID</th>
+                            <th style="width: 40%">Subject Name</th>
+                            <th style="width: 15%">Credits</th>
+                            <th style="width: 30%">Course</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var subject in Model.subjects)
+                        {
+                            <tr>
+                                <td onclick="selectSubject('@subject.subjectID')">@subject.subjectID</td>
+                                <td>@subject.subjectName</td>
+                                <td>@subject.subjectCredit</td>
+                                <td>@subject.courseID</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Right Column (20%) -->
+        <div class="sidebar">
+            <h2 style="margin-top: 10px;">Selected Subject</h2>
+            <form method="post" asp-page-handler="addoffered">
+                <div>
+                    <label>Subject ID :</label>
+                    <input type="text" asp-for="subjectoo.subjectID" id="subjectid" class="form-control" />
+                    <span asp-validation-for="subjectoo.subjectID" class="text-danger"></span>
+                </div>
+                <div>
+                    <label>Session ID :</label>
+                    <select asp-for="subjectoo.sessionID" style="width : 100px;">
+                        @foreach (var session in Model.sessions)
+                        {
+                            <option value="@session.sessionID">@session.sessionID</option>
+                        }
+                    </select>
+                </div>
+                <div>
+                    <label>Lecturer ID :</label>
+                    <input type="text" asp-for="subjectoo.lecturerID" class="form-control" />
+                    <span asp-validation-for="subjectoo.lecturerID" class="text-danger"></span>
+                </div>
+                <div>
+                    <label>Section : </label>
+                    <input type="text" asp-for="subjectoo.section" class="form-control" />
+                    <span asp-validation-for="subjectoo.section" class="text-danger"></span>
+                </div>                <div>
+                    <label>Max Seats : </label>
+                    <input type="number" asp-for="subjectoo.maxSeats" value="" class="form-control" />
+                    <span asp-validation-for="subjectoo.maxSeats" class="text-danger"></span>
+                </div>
+                <button type="submit" class="btn-submit">Add Subject</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    .subject-table tr.selected {
+        background-color: #e3f2fd !important;
+        box-shadow: inset 3px 0 0 #2196f3;
+    }
+
+    .subject-table tr {
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+        .subject-table tr:hover:not(.selected) {
+            background-color: #f5f5f5;
+        }
+
+    #selected-subject-view {
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        border: 1px solid #e0e0e0;
+    }
+
+        #selected-subject-view p {
+            margin: 8px 0;
+        }
+</style>
+
+<script>
+    // Store currently selected row reference
+    let selectedRow = null;
+
+    function selectSubject(id) {
+        // Remove highlight from previous selection
+        if (selectedRow) {
+            selectedRow.classList.remove('selected');
+        }
+
+        // Highlight new selection
+        selectedRow = event.currentTarget;
+        selectedRow.classList.add('selected');
+
+        document.getElementById('subjectid').value = id;
+    }
+</script>

@@ -1,0 +1,92 @@
+﻿@page
+@model enrolmentSystem.Pages.Statement.StudentStatementModel
+@{
+}
+
+<head>
+
+</head>
+
+<body>
+    <h2>Student Statement</h2>
+
+    <form method="post">
+        <div>
+            <label>Transaction Date</label>
+
+            <label>From</label>
+            <input asp-for="StatementStartDate" type="date" id="startDate" class="form-control" />
+            <span asp-validation-for="StatementStartDate" class="text-danger"></span>
+
+            <label>To</label>
+            <input asp-for="StatementEndDate" type="date" id="endDate" class="form-control" />
+            <span asp-validation-for="StatementEndDate" class="text-danger"></span>
+
+            <button type="submit">View</button>
+        </div>
+    </form>
+
+    <dl>
+        <dt class="col-3">
+            <label>Statement Date</label>
+        </dt>
+        <dd class="col-7">
+            <label>@Model.StatementDate</label>
+        </dd>
+        <dt class="col-3">
+            <label>Student Name</label>
+        </dt>
+        <dd class="col-7">
+            <label>@Model.StudentName</label>
+        </dd>
+
+        <dt class="col-3">
+            <label>Student ID</label>
+        </dt>
+        <dd class="col-7">
+            <label>@Model.StudentID</label>
+        </dd>
+
+        <dt class="col-3">
+            <label>Course ID</label>
+        </dt>
+        <dd class="col-7">
+            <label>@Model.CourseID</label>
+        </dd>
+
+        <dt class="col-3">
+            <label>Course</label>
+        </dt>
+        <dd class="col-7">
+            <label>@Model.CourseName</label>
+        </dd>
+    </dl>
+
+
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Particular</th>
+                <th>Receipt ID</th>
+                <th>Amount Due (RM)</th>  
+                <th>Amount Paid (RM)</th> 
+                <th>Total Amount Due / Paid (RM)</th> 
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><?php echo htmlspecialchars($order['orderID']); ?></td>
+                <td><?php echo htmlspecialchars($order['orderDescription']); ?></td>
+                <td><?php echo htmlspecialchars($order['orderDateTime']); ?></td>
+                <td><?php echo htmlspecialchars($order['shipCompany']); ?></td>
+                <td><?php echo htmlspecialchars($order['orderStatus']); ?></td>
+            </tr>
+    </table>
+</body>
+
+<script>
+    // Restrict date selection
+    document.getElementById('startDate').setAttribute('max', today);
+    document.getElementById('endDate').setAttribute('max', today);
+</script>

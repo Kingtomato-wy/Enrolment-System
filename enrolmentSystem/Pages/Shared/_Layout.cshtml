@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - enrolmentSystem</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/enrolment.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/addsubject.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/enrolmentSystem.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-page="/Index">enrolmentSystem</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link text-dark dropdown-toggle" asp-area="" asp-page="" id="enrolmentDropdown" role="button" aria-haspopup="true" aria-expanded="false">Enrolment</a>
+                            <div class="dropdown-menu" aria-labelledby="enrolmentDropdown">
+                                <a class="dropdown-item" asp-page="CourseEnrolment">Course Enrolment</a>
+                            </div>
+                        </li>
+
+<<<<<<< HEAD
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Enrolment">Enrolment</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/AddSubject">AddSubject</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/AddsubjectOffered">AddSubject Offered</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Viewsubjectoffer">Subject Offer List</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/SetTimetable">Timetable</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/AddSession">Add Session</a>
+                        </li>
+=======
+                        <li class="nav-item dropdown">
+                            <a class="nav-link text-dark dropdown-toggle" asp-area="" asp-page="" id="addDropDropdown" role="button" aria-haspopup="true" aria-expanded="false">Add / Drop</a>
+                            <div class="dropdown-menu" aria-labelledby="addDropDropdown">
+                                <a class="dropdown-item" asp-page="CourseAddDrop>Course Add / Drop</a>
+                                <a class="dropdown-item" asp-page="AddDropHistory">Add Drop History</a>
+                            </div>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link text-dark dropdown-toggle" asp-area="" asp-page="" id="enquiryDropdown" role="button" aria-haspopup="true" aria-expanded="false">Enquiry</a>
+                            <div class="dropdown-menu" aria-labelledby="enquiryDropdown">
+                                <a class="dropdown-item" asp-page="TimetableMatching">Timetable Matching</a>
+                                <a class="dropdown-item" asp-page="StudentEvaluationOfTeaching">Student Evaluation of Teaching</a>
+                                <a class="dropdown-item" asp-page="ContactUs">Contact Us</a>
+                            </div>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link text-dark dropdown-toggle" asp-area="" asp-page="" id="statementDropdown" role="button" aria-haspopup="true" aria-expanded="false">Statement</a>
+                            <div class="dropdown-menu" aria-labelledby="statementDropdown">
+                                <a class="dropdown-item" asp-page="/Statement/StudentStatement">Student Statement</a>
+                                <a class="dropdown-item" asp-page="/Statement/RegistrationSummary">Registration Summary</a>
+                            </div>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link text-dark dropdown-toggle" asp-area="" asp-page="" id="paymentDropdown" role="button" aria-haspopup="true" aria-expanded="false">Payment</a>
+                            <div class="dropdown-menu" aria-labelledby="paymentDropdown">
+                                <a class="dropdown-item" asp-page="/Payment">Payment</a>
+                                <a class="dropdown-item" asp-page="/OnlinePayemntHistory">Online Payment History</a>
+                                <a class="dropdown-item" asp-page="/Invoice and Adjustment Note">Invoice and Adjustment Note</a>
+
+                            </div>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link text-dark dropdown-toggle" asp-area="" asp-page="" id="accountDropdown" role="button" aria-haspopup="true" aria-expanded="false">Account</a>
+                            <div class="dropdown-menu" aria-labelledby="accountDropdown">
+                                <a class="dropdown-item" asp-page="/Account/ChangePassword">Change Password</a>
+                                <a class="dropdown-item" asp-page="/Account/UpdateProfile">Profile</a>
+                                <a class="dropdown-item" asp-page="/Login/Login">Logout</a>
+                            </div>
+                        </li>
+
+>>>>>>> origin/wy
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2025 - enrolmentSystem - <a asp-area="" asp-page="/Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

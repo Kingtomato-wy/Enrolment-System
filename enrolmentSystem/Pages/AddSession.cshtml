@@ -1,0 +1,64 @@
+﻿@page
+@model enrolmentSystem.Pages.AddSessionModel
+@{
+}
+
+<div class="subject-management-container">
+    <div class="management-header">Subject Management</div>
+    <div class="management-grid">
+        <div class="table-container">
+            <div class="table-wrapper">
+                <table class="subject-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 40%">Sesion ID</th>
+                            <th style="width: 15%">Start Date</th>
+                            <th style="width: 30%">End Date</th>
+                            <th style="width: 30%">Session Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var sess in Model.sessionslist)
+                        {
+                            <tr>
+                                <td>@sess.sessionID</td>
+                                <td>@sess.startDate</td>
+                                <td>@sess.endDate</td>
+                                <td>@sess.sessionStatus</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Right Column (20%) -->
+        <div class="sidebar">
+            <h2 style="margin-top: 30px;">Session Record</h2>
+            <form method="post" asp-page-handler="addsession">
+                Session ID : <input type="text" asp-for="session.sessionID" class="form-control" />
+                <span asp-validation-for="session.sessionID" class="text-danger"></span>
+                Start Date : <input type="date" asp-for="session.startDate" class="form-control" />
+                <span asp-validation-for="session.startDate" class="text-danger"></span>
+                End Date : <input type="date" asp-for="session.endDate" class="form-control" />
+                <span asp-validation-for="session.endDate" class="text-danger"></span>
+                <div style="display: flex; align-items: start;">
+                    <label style="display: flex; align-items: start;">
+                        Open<input type="radio" asp-for="session.sessionStatus" value="Open" style="width  : 70px ; align-items: center" />
+
+                    </label>
+                    <label style="display: flex; align-items: start;">
+                        Close<input type="radio" asp-for="session.sessionStatus" value="Close" style="width  : 70px ; align-items: center" />
+                    </label>
+
+                    <span asp-validation-for="session.sessionStatus" class="text-danger"></span>
+                </div>
+
+
+                <input type="submit" class="btn-submit"></in>
+            </form>
+        </div>
+    </div>
+</div>
+
+

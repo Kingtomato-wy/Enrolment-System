@@ -1,0 +1,142 @@
+﻿@page
+@model UpdateProfileModel
+@{
+}
+
+<head>
+	<link rel="stylesheet" href="~/css/site.css">
+</head>
+
+<body>
+	<h1>Update Profile</h1>
+	<form method="post">
+		<!--Update Profile-->
+		<div>
+			<h2>Contact Details</h2>
+			<div>
+				<label>Telephone Number</label>
+				<input asp-for="update.TelNum" type="tel" placeholder="Enter your phone number" />
+				<span asp-validation-for="update.TelNum" class="text-danger"></span>
+			</div>
+			<div>
+				<label>HP Number</label>
+				<input asp-for="update.HPNum" type="tel" placeholder="Enter your phone number" />
+				<span asp-validation-for="update.HPNum" class="text-danger"></span>
+			</div>
+			<div>
+				<label>Primary Email</label>
+				<input asp-for="update.primaryEmail" type="email" placeholder="Enter your Email" />
+				<span asp-validation-for="update.primaryEmail" class="text-danger"></span>
+			</div>
+			<div>
+				<label>Alternative Email</label>
+				<input asp-for="update.alternativeEmail" type="email" placeholder="Enter your Email" />
+				<span asp-validation-for="update.alternativeEmail" class="text-danger"></span>
+			</div>
+
+
+			<div>
+				<label>Permanant Home Address</label>
+				<div class="input-group">
+					<input asp-for="update.permanantAddress" type="text" placeholder="Enter your address" />
+				</div>
+
+				<div class="input-group">
+					<input asp-for="update.permanantPostalCode" type="text" id="PostalCode" placeholder="Enter your postal code" />
+				</div>
+
+				<div class="input-group">
+					<input asp-for="update.permanantArea" type="text" placeholder="Enter your area" />
+				</div>
+
+				<div class="input-group">
+					<input asp-for="update.permanantState" type="text" id="State" placeholder="Enter your state" />
+				</div>
+				<div class="input-group">
+					<label for="BankName">Country</label>
+					<select asp-for="update.permanantCountry" asp-items="Model.Countries" id="bankName" class="form-control">
+						<option value="" disabled selected>Countries</option>
+					</select>
+					<span asp-validation-for="update.permanantCountry" class="text-danger"></span>
+				</div>
+			</div>
+
+			<div>
+				<label>Current Mailing Address</label>
+				<div class="input-group">
+					<input asp-for="update.currentAddress" type="text" placeholder="Enter your address" />
+				</div>
+
+				<div class="input-group">
+					<input asp-for="update.currentPostalCode" type="text" id="PostalCode" placeholder="Enter your postal code" />
+				</div>
+
+				<div class="input-group">
+					<input asp-for="update.currentArea" type="text" placeholder="Enter your area" />
+				</div>
+
+				<div class="input-group">
+					<input asp-for="update.currentState" type="text" id="State" placeholder="Enter your state" />
+				</div>
+
+				<div class="input-group">
+					<label for="BankName">Country</label>
+					<select asp-for="update.currentCountry" asp-items="Model.Countries" id="bankName" class="form-control">
+						<option value="" disabled selected>Countries</option>
+					</select>
+					<span asp-validation-for="update.currentCountry" class="text-danger"></span>
+				</div>
+			</div>
+
+
+			<label>Emergency Contact</label>
+			<div>
+				<label for="relationship">Relatioship</label>
+				<select asp-for="update.emergencyContactRelationship" asp-items="Model.Relationships" id="Relationship" class="form-control">
+					<option value="" disabled selected>Relationship</option>
+				</select>
+				<span asp-validation-for="update.emergencyContactRelationship" class="text-danger"></span>
+			</div>
+
+			<div>
+				<label>Contact Name</label>
+				<input asp-for="update.emergencyContactName" type="text" placeholder="Enter your name" />
+				<span asp-validation-for="update.emergencyContactName" class="text-danger"></span>
+			</div>
+
+			<div>
+				<label>HP Number</label>
+				<input asp-for="update.emergencyHPNum" type="tel" placeholder="Enter your phone number" />
+				<span asp-validation-for="update.emergencyHPNum" class="text-danger"></span>
+			</div>
+		</div>
+
+		<!--Update Bank Details-->
+		<div>
+			<h3>Bank Details</h3>
+			<div>
+				<label for="BankName">Bank Name</label>
+				<select asp-for="update.bankName" asp-items="Model.bankNames" id="bankName" class="form-control">
+					<option value="" disabled selected>Bank Name</option>
+				</select>
+				<span asp-validation-for="update.bankName" class="text-danger"></span>
+			</div>
+
+			<div>
+				<label>Bank Account Number</label>
+				<input asp-for="update.bankAccountNumber" type="text" placeholder="Enter account number" />
+				<span asp-validation-for="update.bankAccountNumber" class="text-danger"></span>
+			</div>
+
+			<div>
+				<label>Bank Holder Name</label>
+				<input asp-for="update.bankHolderName" type="text" placeholder="Enter holder name" />
+				<span asp-validation-for="update.bankHolderName" class="text-danger"></span>
+			</div>
+		</div>
+
+		<button type="submit">Save</button>
+		<button type="button" onclick="window.location.href='/StudentDashboard'">Cancel</button>
+
+	</form>
+</body>

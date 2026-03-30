@@ -1,0 +1,69 @@
+﻿.enrolment-container {
+   
+}
+
+.enrolment-header {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.enrolment-info {
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.enrolment-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+    .enrolment-table th, .enrolment-table td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .enrolment-table th {
+        background-color: #007bff;
+        color: white;
+    }
+
+    .enrolment-table tr:hover {
+        background-color: #f1f1f1;
+    }
+
+.btn-add {
+    background-color: #28a745;
+    color: white;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    .btn-add:hover {
+        background-color: #218838;
+    }
+
+.btn-remove {
+    background-color: #dc3545;
+    color: white;
+    padding: 6px 14px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    .btn-remove:hover {
+        background-color: #c82333;
+    }
+
+
+    input{
+        width : 300px;
+    }
+    

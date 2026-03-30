@@ -1,0 +1,159 @@
+﻿@page
+@model enrolmentSystem.Pages.SetTimetableModel
+@{
+}
+<style>
+    .subject-table tr.selected {
+        background-color: #e3f2fd !important;
+        box-shadow: inset 3px 0 0 #2196f3;
+    }
+
+    .subject-table tr {
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+        .subject-table tr:hover:not(.selected) {
+            background-color: #f5f5f5;
+        }
+
+    #selected-subject-view {
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        border: 1px solid #e0e0e0;
+    }
+
+        #selected-subject-view p {
+            margin: 8px 0;
+        }
+</style>
+
+<div style="display:grid; grid-template-columns: 60% 40%">
+    <div style="display: grid; grid-auto-rows: 1fr 1fr auto ; gap: 10px;">
+        <!-- Subject Offered Table -->
+        <div class="table-container ">
+            <div class="table-wrapper ">
+                <table class="subject-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 5%">ID</th>
+                            <th style="width: 20%">Subject ID</th>
+                            <th style="width: 15%">Session ID</th>
+                            <th style="width: 20%">Lecturer ID</th>
+                            <th style="width: 10%">Section</th>
+                            <th style="width: 15%">Max Seats</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var subject in Model.subjectOffereds)
+                        {
+                            <tr onclick="selectSubject(@subject.subjectOfferedID); loadTimetable(@subject.subjectOfferedID)">
+                                <td>@subject.subjectOfferedID</td>
+                                <td>@subject.subjectID</td>
+                                <td>@subject.sessionID</td>
+                                <td>@subject.lecturerID</td>
+                                <td>@subject.section</td>
+                                <td>@subject.maxSeats</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Timetable -->
+        <div class="table-container">
+            <div class="table-wrapper">
+                <table id="timetableTable" class="subject-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 10%">Timetable ID</th>
+                            <th style="width: 10%">Day</th>
+                            <th style="width: 10%">Start Time</th>
+                            <th style="width: 10%">End Time</th>
+                            <th style="width: 20%">Room Type</th>
+                        </tr>
+                    </thead>
+                    <tbody id="timetableBody">
+                        @if (Model.timetables != null)
+                        {
+                            foreach (var item in Model.timetables)
+                            {
+                                <tr onclick="selectTimetable(@item.timetableID)" class="timetable-row">
+                                    <td>@item.timetableID</td>
+                                    <td>@item.day</td>
+                                    <td>@item.startTime.ToString(@"hh\:mm")</td>
+                                    <td>@item.endTime.ToString(@"hh\:mm")</td>
+                                    <td>@item.roomtType</td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+        <div>
+            <form asp-page-handler="deletetimetable" method="post">
+                <input type="hidden" id="timetableid" asp-for="timett.timetableID" />
+                <button type="submit">Delete</button>
+            </form>
+        </div>
+    </div>
+    <div style="padding : 20px">
+        <form asp-page-handler="addtimetable" method="post">
+            <label>Subject Offered ID:</label>
+            <input type="text" id="subjectOfferedID" name="timett.subjectOfferedID" readonly>
+            <label>Day:</label>
+            <select name="timett.day">
+                @foreach (var day in Enum.GetValues(typeof(DayOfWeek)))
+                {
+                    <option value="@day">@day</option>
+                }
+            </select>
+            <br>
+            <label>Start Time:</label>
+            <input type="time" name="timett.startTIme">
+            <span asp-validation-for="timett.startTime" class="text-danger"></span>
+            <br>
+            <label>End Time:</label>
+            <input type="time" name="timett.endTime">
+            <span asp-validation-for="timett.endTime" class="text-danger"></span>
+            <br>
+            <label>Room Type:</label>
+            <input type="text" name="timett.roomtType">
+            <span asp-validation-for="timett.roomtType" class="text-danger"></span>
+            <br>
+            <button type="submit">Add Timetable</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    let selectedRow = null;
+
+        function selectSubject(id) {
+        if (selectedRow) {
+            selectedRow.classList.remove('selected');
+        }
+        selectedRow = event.currentTarget;
+        selectedRow.classList.add('selected');
+
+        // Redirect to same page with parameter to load timetable
+        window.location.href = `?subjectOfferedID=${id}`;
+    }
+
+
+    function selectTimetable(timetableID) {
+        const row = event.currentTarget;
+        if (selectedRow) {
+            selectedRow.classList.remove('selected');
+        }
+        selectedRow = row;
+        selectedRow.classList.add('selected');
+        document.getElementById("timetableid").value = timetableID;
+    }
+
+</script>
